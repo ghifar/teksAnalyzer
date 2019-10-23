@@ -1,5 +1,7 @@
 package com.ghifar.teksAnalyzer.service;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 
 public interface TeksService {

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -87,13 +88,13 @@ public class TeksServiceImpl implements TeksService {
             }
         }
 
-        //distance max between huruf sama
-//        int hurufMaxDistance=0;
-//        if (count >= 2){
-//            hurufMaxDistance= getHurufMaxDistance(text,huruf);
-//        }
+//        distance max between huruf sama
+        int hurufMaxDistance=0;
+        if (count >= 2){
+            hurufMaxDistance= getHurufMaxDistance(text,huruf);
+        }
 
-        result= new TeksAnlysis(huruf, count, hurufBeforeList,hurufAfterList, 0);
+        result= new TeksAnlysis(huruf, count, hurufBeforeList,hurufAfterList, hurufMaxDistance);
         return result;
 
 
@@ -105,6 +106,10 @@ public class TeksServiceImpl implements TeksService {
         for (int i =0;i< n-1; i++){
             if (str.charAt(i) == huruf){
                 int nxt= str.indexOf(huruf+"",(i+1));
+                if(nxt >0){
+                    //temp
+                    maxLength.add((nxt - i) -1);
+                }
 
             }
 
@@ -114,7 +119,10 @@ public class TeksServiceImpl implements TeksService {
             out[i] = (int) maxLength.get(i);
         }
 
-        return out[out.length-1];
+        //sort.
+        Arrays.sort(out);
+
+        return out[out.length-1];//take terbanyak
     }
 
 
