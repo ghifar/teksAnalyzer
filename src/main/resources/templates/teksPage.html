@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>hasil analisa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table">
+            <thead>
+            <tr>
+                <th> Character Symbol </th>
+                <th> Character Counter </th>
+                <th> Character Info </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="selected_char : ${analysis}">
+                <td><span th:text="${selected_char.huruf}"> Character Symbol </span></td>
+                <td><span th:text="${selected_char.hurufCount}"> Count </span></td>
+                <td>
+                    <p>
+                        before:
+                        <span th:each="char_before : ${selected_char.hurufBefore}">
+                                                        <span th:text="${char_before}"> Character Before </span>
+                                                        </span>
+                    </p>
+                    <p>
+                        after: 
+                        <span th:each="char_after : ${selected_char.hurufAfter}">
+                                                        <span th:text="${char_after}"> Character After </span>
+                                                        </span>
+                    </p>
+<!--                    max-distance: <span th:text=""> Count </span>-->
+
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
