@@ -17,6 +17,9 @@
             </tr>
             </thead>
             <tbody>
+            <tr th:if="${analysis.empty}">
+                <td colspan="2"> No Text</td>
+            </tr>
             <tr th:each="selected_char : ${analysis}">
                 <td><span th:text="${selected_char.huruf}"> Character Symbol </span></td>
                 <td><span th:text="${selected_char.hurufCount}"> Count </span></td>
@@ -33,13 +36,18 @@
                                                         <span th:text="${char_after}"> Character After </span>
                                                         </span>
                     </p>
-                    max-distance: <span th:text=""> Count </span>
+                    max-distance: <span th:text="${selected_char.getHurufDistance()}"> Count </span>
 
 
                 </td>
             </tr>
             </tbody>
         </table>
+    </div>
+
+    <div class="col-md-6">
+        <a class="btn btn-success" href="#" th:href="@{/}"> Analyze New Text</a>
+
     </div>
 </div>
 </body>

@@ -14,18 +14,15 @@ import java.util.ArrayList;
 @Controller
 public class MainController {
 
+    @Autowired
     TeksService teksService;
-
-    @GetMapping("/index")
-    public String index(@RequestParam (name="text") String text){
-        return "hello index";
-    }
 
     @GetMapping("/analyze")
     public String analyze(@RequestParam (name="text") String text, Model model){
 
         if(text.length() >  255){
             model.addAttribute("error", true);
+            model.addAttribute("error_msg", "Cant be more than 255 Chars");
             return "errorPage";
         }
 
@@ -34,6 +31,7 @@ public class MainController {
 
         model.addAttribute("analysis" ,analysis);
         model.addAttribute("text", text);
+        model.addAttribute("error", false);
 
         return "teksPage";
     }

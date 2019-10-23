@@ -19,7 +19,7 @@ public class TeksServiceImpl implements TeksService {
         ArrayList<Character> hurufList = new ArrayList<>();
 
         for (char huruf : text.toCharArray()){
-            if(!hurufList.contains(huruf)){
+            if(!hurufList.contains(huruf) && huruf != ' '){
                 hurufList.add(huruf);
             }
         }
